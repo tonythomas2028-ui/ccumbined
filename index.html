@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBA Program - Amal Jyothi College of Engineering</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.loader-logo {
+    width: 90px;
+    margin-bottom: 15px;
+    animation: fadeInLogo 1s ease-in-out;
+}
+/* PREMIUM SPINNER */
+
+.premium-spinner {
+    margin: 20px auto 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgba(11,94,215,0.15);
+    border-top: 3px solid #0b5ed7;
+    animation: spinPremium 0.9s linear infinite;
+    position: relative;
+}
+
+/* glow effect */
+.premium-spinner::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(99,160,255,0.2);
+}
+
+/* animation */
+@keyframes spinPremium {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+:root {
+    --blue-dark: #003366;
+    --blue-main: #0b5ed7;
+    --blue-light: #e7f1ff;
+    --text-main: #1a1a1a;
+    --text-muted: #5f6b7a;
+    --bg-page: #f5f7fb;
+    --white: #ffffff;
+    --border-soft: #d0d8e5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+    color: var(--text-main);
+
+    background: linear-gradient(-45deg, #dbeeff, #cfe7ff, #eaf4ff, #d6ecff);
+    background-size: 400% 400%;
+    animation: skyMove 12s ease infinite;
+}
+@keyframes skyMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, #e3efff 0%, #f5f7fb 40%, #ffffff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader-content {
+    text-align: center;
+    color: var(--blue-dark);
+}
+.loader h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #004a9f, #0b5ed7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(11,94,215,0.15);
+    border-top: 4px solid var(--blue-main);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(11,94,215,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(360deg) scale(1); opacity: 0; }
+}
+
+/* Scroll Progress */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #0b5ed7, #63a0ff);
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    transition: all 0.3s ease;
+}
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.logo-img {
+    height: 34px;
+    width: auto;
+}
+.logo-text {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--blue-dark);
+}
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+.nav-links a {
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0b5ed7, #63a0ff);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--blue-dark);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+body {
+    perspective: 1200px;
+}
+
+/* Sections become layers */
+section {
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* Depth effect */
+section.layer-back {
+    transform: translateZ(-200px) scale(0.9);
+}
+
+section.layer-mid {
+    transform: translateZ(0px) scale(1);
+}
+
+section.layer-front {
+    transform: translateZ(150px) scale(1.05);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    background: radial-gradient(circle at top left, #e7f1ff 0%, #f5f9ff 50%, #ffffff 100%);
+    color: var(--text-main);
+    padding: 85px 20px 50px;
+    margin-top: 44px;
+    border-bottom: 1px solid #dde6f3;
+}
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0,2fr) minmax(0,1.3fr);
+    gap: 2rem;
+    align-items: center;
+}
+.hero h1 {
+    font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+    margin-bottom: 0.7rem;
+    color: var(--blue-dark);
+}
+.hero p {
+    font-size: 1rem;
+    max-width: 520px;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.3rem;
+}
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+.cta-button {
+    padding: 10px 26px;
+    font-size: 0.95rem;
+    background: linear-gradient(90deg, #0b5ed7, #63a0ff);
+    color: var(--white);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 24px rgba(11,94,215,0.25);
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(11,94,215,0.35);
+}
+.hero-secondary {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.hero-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid #d7e2f3;
+    box-shadow: 0 16px 40px rgba(6,38,85,0.08);
+}
+.hero-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: var(--blue-dark);
+}
+.hero-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+/* Generic section wrapper */
+.section-wrapper {
+    padding: 40px 15px;
+}
+section {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Door overlay */
+.section-door {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14,82,168,0.08), rgba(5,41,92,0.12));
+    transform-origin: left;
+    transform: perspective(800px) rotateY(90deg);
+    transition: transform 0.7s ease-out;
+    border-radius: 18px;
+    z-index: 2;
+}
+section.visible .section-door {
+    transform: perspective(800px) rotateY(0deg);
+}
+
+.section-content {
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.4s ease 0.2s;
+}
+section.visible .section-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dropbox-style main container */
+.section-box {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 26px;
+    border: 1px solid rgba(255,255,255,0.4);
+
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+section h2 {
+    font-size: 1.6rem;
+    color: var(--blue-dark);
+    margin-bottom: 0.5rem;
+}
+.section-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+}
+
+/* Section header with image */
+.section-header {
+    display: grid;
+    grid-template-columns: minmax(0,2fr) minmax(0,1.2fr);
+    gap: 1.3rem;
+    align-items: center;
+    margin-bottom: 1.4rem;
+}
+.section-header-text {
+    min-width: 0;
+}
+.section-image {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #d7e2f3;
+    box-shadow: 0 10px 24px rgba(8,47,107,0.12);
+}
+.section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* Cards grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem;
+    margin-top: 0.5rem;
+}
+.card {
+    background: var(--white);
+    padding: 1.4rem;
+    border-radius: 14px;
+    border: 1px solid #dde6f3;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(11,94,215,0.12) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(7,36,82,0.14);
+    border-color: rgba(11,94,215,0.35);
+}
+.card:hover::before {
+    opacity: 1;
+}
+.card h3 {
+    color: var(--blue-dark);
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+}
+.card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Contact links */
+.contact-info a {
+    color: var(--blue-main);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dotted rgba(11,94,215,0.35);
+}
+.contact-info a:hover {
+    color: var(--blue-dark);
+}
+
+/* Footer */
+footer {
+    background: #0c1f3d;
+    color: #eaf0ff;
+    padding: 40px 18px 18px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-top: 20px;
+}
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.footer-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 2rem;
+}
+.footer-section h3 {
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.footer-section p,
+.footer-section a {
+    font-size: 0.9rem;
+    color: #c2d1f5;
+    text-decoration: none;
+}
+.footer-section a:hover {
+    color: #ffffff;
+}
+
+/* FAQ */
+.faq-item {
+    margin-bottom: 1rem;
+}
+.faq-question {
+    font-weight: 500;
+    cursor: pointer;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+.faq-answer {
+    color: #c2d1f5;
+    display: none;
+    font-size: 0.9rem;
+}
+.loader {
+    position: fixed;
+    inset: 0; /* 🔥 important */
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(circle at center, #eef5ff, #ffffff);
+
+    z-index: 99999; /* 🔥 force on top */
+}
+.cta-button {
+    transition: transform 0.2s ease;
+}
+/* Social */
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+}
+.social-links a {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #0b5ed7, #63a0ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.1rem;
+}
+.social-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    font-size: 0.8rem;
+    color: #9fb2dd;
+}
+.hero {
+    perspective: 1000px;
+}
+
+.hero-inner {
+    transition: transform 0.2s ease-out;
+}
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        display: none;
+        border-bottom: 1px solid #dde6f3;
+    }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a {
+        display: block;
+        padding: 0.9rem 1.5rem;
+        color: var(--blue-dark);
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-top: 1px solid #edf2fb;
+    }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero { padding: 80px 18px 40px; }
+    .section-box { padding: 18px 16px 20px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .section-header { grid-template-columns: 1fr; }
+}
+nav .logo-img {
+    transition: transform 0.3s ease;
+}
+
+nav .logo-img:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+</style>
+</head>
+
+<body>
+<div class="loader" id="loader">
+    <div class="loader-content">
+
+        <div class="logo-wrapper">
+            <div class="logo-ring"></div>
+            <img src="ajce-logo.png" alt="AJCE Logo" class="loader-logo">
+        </div>
+
+        <h2 class="loader-title">Amal Jyothi College of Engineering</h2>
+        <div class="premium-spinner"></div>
+
+    </div>
+</div>
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Particles Background -->
+<div class="particles" id="particles"></div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-content">
+        <div class="logo-area">
+            <img src="ajce-logo.png" alt="Amal Jyothi College Logo" class="logo-img">
+            <div class="logo-text">AJCE · BBA Program</div>
+        </div>
+        <div class="nav-links">
+            <a href="#course">Course</a>
+            <a href="#eligibility">Eligibility</a>
+            <a href="#why-us">Why AJCE</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-inner">
+        <div>
+            <h1>BBA at Amal Jyothi College of Engineering</h1>
+            <p>Business Administration delivered inside Kerala’s leading engineering ecosystem. Learn to manage technology, people, and markets in one integrated program.</p>
+            <div class="hero-meta">
+                <span>3-year full-time program</span>
+                <span>Intake: 60 students</span>
+                <span>Location: Kanjirappally, Kottayam</span>
+            </div>
+            <div class="cta-row">
+                <button class="cta-button" onclick="applyNow()">Apply Now</button>
+                <span class="hero-secondary">Online application · Limited seats</span>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="section-image" style="margin-bottom:0.9rem;">
+                <img src="hero-bba-campus.jpg" alt="AJCE campus and BBA students">
+            </div>
+            <h3>At a Glance</h3>
+            <p><strong>Specializations:</strong> Marketing, Finance, HR, Operations</p>
+            <p><strong>Hosted by:</strong> Amal Jyothi College of Engineering Business School</p>
+            <p><strong>Pedagogy:</strong> Case studies, live projects, industry mentors</p>
+            <p><strong>Campus:</strong> Residential, WiFi-enabled, world-class labs & library</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-wrapper">
+
+    <!-- Course Details -->
+    <section id="course">
+        <div class="section-door"></div>
+        <div class="section-content">
+            <div class="section-box">
+                <div class="section-header">
+                    <div class="section-header-text">
+                        <h2>Program Overview</h2>
+                        <p class="section-subtitle">A contemporary BBA designed for the digital economy, delivered from an engineering-powered campus.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="bba-classroom.avif" alt="BBA classroom session">
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Curriculum & Structure</h3>
+                        <p>Six semesters covering core management, quantitative techniques, business analytics, and technology-enabled business. Electives in digital marketing, fintech, HR analytics, and operations strategy.</p>
+                    </div>
+                    <div class="card">
+                        <h3>AJCE Advantage</h3>
+                        <p>Shared ecosystem with engineering, AI, and innovation departments. Exposure to hackathons, startup cells, and interdisciplinary projects that blend management and technology.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Career Outcomes</h3>
+                        <p>Roles in marketing, banking, consulting, HR, and operations. Strong pathway to MBA and other postgraduate programs with support for competitive exam preparation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility -->
+    <section id="eligibility">
+        <div class="section-door"></div>
+        <div class="section-content">
+            <div class="section-box">
+                <div class="section-header">
+                    <div class="section-header-text">
+                        <h2>Admission & Eligibility</h2>
+                        <p class="section-subtitle">Clear, transparent criteria to help you plan your application.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="admission-desk.jpg" alt="Admission counseling at AJCE">
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Who Can Apply</h3>
+                        <p>Any +2 (Class XII) pass candidate from Science, Commerce, or Humanities with minimum 50% aggregate marks from a recognized board. Relaxation is provided as per government norms for eligible categories.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Selection Process</h3>
+                        <p>Shortlisting based on +2 marks and application details, followed by personal interaction or counseling. Management quota seats are available under institutional guidelines.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Fee & Scholarships</h3>
+                        <p>Fee structured to remain affordable while providing premium facilities. Merit scholarships, need-based support, and special schemes may be available for deserving students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why AJCE -->
+    <section id="why-us">
+        <div class="section-door"></div>
+        <div class="section-content">
+            <div class="section-box">
+                <div class="section-header">
+                    <div class="section-header-text">
+                        <h2>Why Choose AJCE BBA</h2>
+                        <p class="section-subtitle">A management degree anchored in one of Kerala’s most respected engineering institutions.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="ajce-campus.jpg" alt="Amal Jyothi College campus view">
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Faculty & Mentoring</h3>
+                        <p>Experienced faculty with academic and corporate backgrounds guide you through concepts and real-world applications. Regular mentoring helps you build confidence and clarity in your career path.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Industry Interface</h3>
+                        <p>Guest talks, workshops, and live projects with companies in IT, manufacturing, services, and startups. Internship support that helps you experience how businesses work on the ground.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Campus Life & Facilities</h3>
+                        <p>Digitally enabled classrooms, rich library resources, sports, clubs, and student associations. A disciplined yet vibrant campus culture that focuses on holistic development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="section-door"></div>
+        <div class="section-content">
+            <div class="section-box">
+                <div class="section-header">
+                    <div class="section-header-text">
+                        <h2>Student Experiences</h2>
+                        <p class="section-subtitle">Hear how the AJCE environment shaped our students’ journeys.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="students-group.jpg" alt="BBA students at AJCE">
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <p>“The mix of business fundamentals and exposure to tech-driven projects gave me confidence to work with cross-functional teams.”</p>
+                        <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);"><strong>- Student, Recent Batch</strong></p>
+                    </div>
+                    <div class="card">
+                        <p>“Faculty support, presentation practice, and regular interactions with industry speakers helped me improve my communication and decision-making.”</p>
+                        <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);"><strong>- Student, Recent Batch</strong></p>
+                    </div>
+                    <div class="card">
+                        <p>“Being on an engineering campus meant more exposure to innovation, startups, and technology – a big plus for a BBA program.”</p>
+                        <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);"><strong>- Student, Recent Batch</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-door"></div>
+        <div class="section-content">
+            <div class="section-box">
+                <div class="section-header">
+                    <div class="section-header-text">
+                        <h2>Contact & Visit</h2>
+                        <p class="section-subtitle">Reach out to our admission team for guidance and campus visits.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="ajce-building.jpeg" alt="AJCE main building">
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Email</h3>
+                        <p class="contact-info">📧 <a href="mailto:bba@amaljyothi.ac.in">bba@amaljyothi.ac.in</a></p>
+                        <p>Share your academic details and questions. The team will respond with program and admission information.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Phone</h3>
+                        <p class="contact-info">📞 <a href="tel:+914825252352">+91 4825 252352</a></p>
+                        <p>Call during working hours for quick clarifications, fee information, and counseling slot booking.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Campus</h3>
+                        <p>Amal Jyothi College of Engineering<br>Kanjirappally, Kottayam, Kerala - 686518</p>
+                        <p>Plan a visit to experience classrooms, library, labs, and the overall academic atmosphere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+
+        <div class="footer-sections">
+
+            <!-- About -->
+            <div class="footer-section">
+                <h3>About the Program</h3>
+                <p>
+                    The BBA at Amal Jyothi College of Engineering is envisioned as a future-ready management program that benefits from a strong engineering and technology ecosystem.
+                </p>
+            </div>
+
+            <!-- FAQ -->
+            <div class="footer-section">
+                <h3>FAQs</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">Is this a regular on-campus program?</div>
+                    <div class="faq-answer">Yes.The BBA program is conducted in regular mode with on-campus classes, attendance requirements, internal assessments, and examinations as per academic regulations.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">Can non-commerce students apply?</div>
+                    <div class="faq-answer">Yes. Students from Science and Humanities streams can also apply, provided they meet the minimum eligibility marks in +2.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">Is there support for higher studies?</div>
+                    <div class="faq-answer">Yes,The department provides guidance for MBA and other postgraduate options, along with inputs for aptitude tests, group discussions, and interviews.</div>
+                </div>
+            </div>
+
+            <!-- Stay Connected -->
+            <div class="footer-section">
+                <h3>Stay Connected</h3>
+                <p>Follow the college channels for updates.</p>
+
+                <div class="social-links">
+                    <a href="https://www.ajce.in/" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                    <a href="https://wa.me/918594001800" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://facebook.com/amaljyothi" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/ajce.in" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2026 Amal Jyothi College of Engineering · All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+// Loader
+// Loader
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+    }, 1500);
+});
+
+// Apply Now
+function applyNow() {
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSeL0__xNuYdt0Xcl4OWcHTbCLzAObDz2zFixSD2blfUM0UP5A/viewform?usp=publish-editor", "_blank");
+}
+
+// Mobile Menu
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+}
+const cursor = document.querySelector('.cursor');
+
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+}
+
+// Door Animations
+const sectionsEls = document.querySelectorAll('.section-wrapper section');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+sectionsEls.forEach(section => observer.observe(section));
+
+// Progress Bar + Navbar + 3D Scroll (MERGED INTO ONE)
+window.addEventListener("scroll", () => {
+
+    // Progress bar
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('progressBar').style.width = scrollPercent + '%';
+
+    // Navbar effect
+    const nav = document.querySelector("nav");
+    if (window.scrollY > 50) {
+        nav.style.background = "rgba(255,255,255,0.85)";
+        nav.style.boxShadow = "0 8px 25px rgba(0,0,0,0.08)";
+    } else {
+        nav.style.background = "rgba(255,255,255,0.6)";
+        nav.style.boxShadow = "none";
+    }
+
+    // SAFE 3D effect (only sections)
+    const sections = document.querySelectorAll(".section-wrapper section");
+
+    sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const center = window.innerHeight / 2;
+
+        const distance = rect.top - center;
+        const depth = distance * -0.08;
+
+        section.style.transform = `
+            translateY(${distance * 0.02}px)
+            translateZ(${depth}px)
+        `;
+    });
+
+    // Background parallax
+    document.body.style.backgroundPosition = `center ${window.scrollY * 0.3}px`;
+});
+
+// Particles
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+
+    for (let i = 0; i < 28; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.width = (3 + Math.random() * 8) + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// FAQ Toggle
+function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+}
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Reveal Animation
+const revealElements = document.querySelectorAll('.section-box');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.15 });
+
+revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+});
+
+// Magnetic Buttons
+const buttons = document.querySelectorAll(".cta-button");
+
+buttons.forEach(btn => {
+    btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+
+    btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "translate(0,0)";
+    });
+});
+
+// Init
+createParticles();
+</script>
+</body>
+</html>
